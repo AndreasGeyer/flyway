@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Verify version') {
       steps {
-        sh 'sudo docker run --rm flyway/flyway:8.5.1 version'
+        sh 'docker run --rm flyway/flyway:8.5.1 version'
       }
     }
   }
