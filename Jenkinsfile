@@ -3,7 +3,10 @@ pipeline {
   stages {
     stage('Verify Docker version') {
       steps {
-        sh 'sudo docker version'
+        sh 'id -g'
+        sh 'id -G'
+        sh 'groups'
+        sh 'docker version'
       }
     }
   }
