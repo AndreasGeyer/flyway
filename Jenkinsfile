@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Verify Docker version') {
       steps {
-        sh 'docker version'
+        sh 'sudo docker version'
       }
     }
   }
