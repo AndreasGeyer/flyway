@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  jenkins:
+    image: myjenkins-arm64
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ~/jenkins:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+  db-dev:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+     - "5432:5432"
