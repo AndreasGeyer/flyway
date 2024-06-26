@@ -9,7 +9,8 @@ pipeline {
     stage('Deploy Changes to DB') {
       steps {
         echo 'Run Flyway Migration'
-        echo "${WORKSPACE}"
+        sh 'ls'
+        sh 'pwd'
         sh 'whereis flyway'
         sh 'flyway info'
       }
