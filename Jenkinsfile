@@ -11,8 +11,7 @@ pipeline {
         echo 'Run Flyway Migration'
         sh 'ls'
         sh 'pwd'
-        sh 'whereis flyway'
-        sh 'flyway info'
+        sh 'docker run --rm -v ./jenkins:/flyway/sql flyway/flyway -url=jdbc:postgresql://localhost:5432/postgres -user=postgres -password=example migrate
       }
     }
   }
