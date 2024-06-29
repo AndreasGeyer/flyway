@@ -11,7 +11,7 @@ pipeline {
         echo 'Run Flyway Migration'
         sh 'ls'
         sh 'pwd'
-        sh 'docker run --rm -v ./jenkins:/flyway/sql --network Jenkinsnetwork flyway/flyway -url=jdbc:postgresql://db-dev:5432/postgres -user=postgres -password=example migrate'
+        sh 'docker run --rm -v /var/jenkins_home/workspace/test2/jenkins:/flyway/sql --network Jenkinsnetwork flyway/flyway -url=jdbc:postgresql://db-dev:5432/postgres -user=postgres -password=example migrate'
       }
     }
   }
