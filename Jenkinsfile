@@ -9,7 +9,7 @@ pipeline {
     stage('Deploy Changes to DB') {
       steps {
         echo 'Run Flyway Migration'
-        sh 'ls'
+        sh 'ls -al'
         sh 'pwd'
         sh 'cd /var/jenkins_home/workspace/test2/mysqlfiles'
         sh 'ls'
