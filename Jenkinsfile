@@ -9,11 +9,11 @@ pipeline {
     stage('Deploy Changes to DB') {
       steps {
         echo 'Run Flyway Migration'
-        sh 'ls -al'
-        sh 'pwd'
-        sh 'cd /var/jenkins_home/workspace/test2/mysqlfiles'
-        sh 'ls -al'
-        sh 'pwd'
+        sh '''
+                cd /var/jenkins_home/workspace/test2/mysqlfiles
+                ls -al
+                pwd
+                '''
         sh 'docker run --rm -v /var/jenkins_home/workspace/test2/mysqlfiles:/flyway/sql --network Jenkinsnetwork flyway/flyway -url=jdbc:postgresql://db-dev:5432/postgres -user=postgres -password=example migrate'
       }
     }
