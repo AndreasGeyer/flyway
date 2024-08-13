@@ -51,7 +51,7 @@ pipeline {
     }
     stage('Deploy to Production') {
         when {
-            branch 'origin/main'
+            expression {env.GIT_BRANCH == 'origin/main'}
         }
         steps {
         echo 'Run Flyway Migration'
