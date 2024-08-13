@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Execute DB Changes on DEV') {
         when {
-            branch 'development'
+            branch 'origin/development'
         }
         steps {
         echo 'Run Flyway Migration'
@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Deploy to INT') {
         when {
-            branch 'integration'
+            branch 'origin/integration'
         }
         steps {
         echo 'Run Flyway Migration'
@@ -36,7 +36,7 @@ pipeline {
     }
     stage('Deploy to ACC') {
         when {
-            branch 'acceptance'
+            branch 'origin/acceptance'
         }
         steps {
         echo 'Run Flyway Migration'
@@ -50,7 +50,7 @@ pipeline {
     }
     stage('Deploy to Production') {
         when {
-            branch 'main'
+            branch 'origin/main'
         }
         steps {
         echo 'Run Flyway Migration'
