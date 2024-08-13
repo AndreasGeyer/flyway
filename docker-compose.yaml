@@ -19,6 +19,30 @@ services:
      - "5432:5432"
     networks:
       - jenkinsnet
+  db-int:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+     - "5433:5432"
+    networks:
+      - jenkinsnet
+  db-acc:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+     - "5434:5432"
+    networks:
+      - jenkinsnet
+  db-prod:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+     - "5435:5432"
+    networks:
+      - jenkinsnet
 networks:
   jenkinsnet:
     name: Jenkinsnetwork
