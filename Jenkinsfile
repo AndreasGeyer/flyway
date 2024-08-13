@@ -4,6 +4,7 @@ pipeline {
     stage('Verify Docker version') {
       steps {
         sh 'docker version'
+        echo branch
       }
     }
     stage('Execute DB Changes on DEV') {
