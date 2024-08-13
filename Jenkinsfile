@@ -51,7 +51,7 @@ pipeline {
     }
     stage('Deploy to Production') {
         when {
-            branch 'main'
+            branch 'origin/main'
         }
         steps {
         echo 'Run Flyway Migration'
