@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Execute DB Changes on DEV') {
         when {
-            branch 'origin/development'
+            expression {env.GIT_BRANCH == 'origin/development'}
         }
         steps {
         echo 'Run Flyway Migration'
@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Deploy to INT') {
         when {
-            branch 'origin/integration'
+            expression {env.GIT_BRANCH == 'origin/integration'}
         }
         steps {
         echo 'Run Flyway Migration'
@@ -37,7 +37,7 @@ pipeline {
     }
     stage('Deploy to ACC') {
         when {
-            branch 'origin/acceptance'
+            expression {env.GIT_BRANCH == 'origin/acceptance'}
         }
         steps {
         echo 'Run Flyway Migration'
