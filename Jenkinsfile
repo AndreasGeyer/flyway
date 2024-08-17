@@ -4,12 +4,13 @@ pipeline {
     stage('Verify Docker version') {
       steps {
         sh 'docker version'
+        echo 'Pulling... ' + env.GIT_BRANCH
       }
     }
     stage('Execute DB Changes on DEV') {
         when {
-            branch 'development'
-        }
+             branch 'development'
+         }
         steps {
         echo 'Run Flyway Migration'
         sh '''
@@ -17,13 +18,13 @@ pipeline {
                 ls -al
                 pwd
                 '''
-        sh 'docker run --rm -v /Users/andreasgeyer/jenkins/workspace/test2/mysqlfiles:/flyway/sql --network Jenkinsnetwork flyway/flyway -url=jdbc:postgresql://db-dev:5432/postgres -user=postgres -password=example migrate'
+        sh 'docker run --rm -v /Users/andreasgeyer/jenkins/workspace/test2/mysqlfiles:/flyway/sql --network Jenkinsnetwork flyway/flyway -url=jdbc:postgresql://db-acc:5432/postgres -user=postgres -password=example migrate'
       }
     }
     stage('Deploy to INT') {
         when {
-            branch 'integration'
-        }
+             branch 'integration'
+         }
         steps {
         echo 'Run Flyway Migration'
         sh '''
@@ -36,8 +37,8 @@ pipeline {
     }
     stage('Deploy to ACC') {
         when {
-            branch 'acceptance'
-        }
+             branch 'acceptance'
+         }
         steps {
         echo 'Run Flyway Migration'
         sh '''
@@ -50,8 +51,8 @@ pipeline {
     }
     stage('Deploy to Production') {
         when {
-            branch 'main'
-        }
+             branch 'main'
+         }
         steps {
         echo 'Run Flyway Migration'
         sh '''
